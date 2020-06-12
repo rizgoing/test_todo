@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import AddTodo from '../AddTodoItem/AddTodo';
 import Search from '../Search/Search';
 import TodoItem from './TodoItem';
+import Filters from '../Filters/Filters';
 
 const TodoList = () => {
    
     const [todos, setTodos] = useState([]);
     const [search, setSearch] = useState('');
+    const [filter, setFilter] = useState(false);
 
     const addTodo = (e) => {
 
@@ -36,13 +38,31 @@ const TodoList = () => {
     ? todos
     : todos.filter((todo) => {
         return todo.text.toLowerCase().includes(search.toLowerCase());
-      });
+    });
+
+    const handleFilter = (e) => {
+        if (e.target.value === 'all') {
+            setFilter(false);
+        } else setFilter(true);
+        
+    }
+    
+    
+        
+        
+    const filteredItems = filter
+           ? searchedTodos.filter((todo) => {
+             return todo.checked === false 
+    }) : searchedTodos
+        
+
 
     return (
         <div className="todo-list-wrapper">
             <Search search={handleSearch} />
+            <Filters filter={handleFilter}/>
               <ul className="todo-list">
-                <TodoItem del={deleteTodo} todos={searchedTodos} />
+                <TodoItem del={deleteTodo} todos={filteredItems} />
               </ul>
             <AddTodo add={addTodo} />
         </div>
