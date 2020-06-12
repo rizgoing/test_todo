@@ -169,6 +169,17 @@ body .container .todo-list-wrapper input:focus {
   border-bottom: 2px solid rgba(53, 153, 219, 0.397);
 }
 
+body .container .todo-list-wrapper .filters input[type=radio] {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+body .container .todo-list-wrapper .filters label {
+  margin: 0 10px;
+}
+
 body .container .todo-list-wrapper .todo-list {
   list-style: none;
   padding: 0;

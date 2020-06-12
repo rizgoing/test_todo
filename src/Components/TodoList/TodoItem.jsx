@@ -9,7 +9,7 @@ const TodoItem = ({ todos, del }) => {
 
     // }
     useEffect(() => {
-        toggle ? setVal('completed') : setVal(null)
+        toggle ? setVal('completed') : setVal(null);
     })
 
     const todoItem = 
@@ -20,7 +20,9 @@ const TodoItem = ({ todos, del }) => {
                 <span 
                   onClick={(e) => {
                   i.checked = !i.checked;
-                  setToggle(!toggle)
+                  e.target.classList.toggle('completed');
+                  
+                  
                   // toggleChange(e)              
                   console.log(i, toggle);
                 
