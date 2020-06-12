@@ -1,33 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-const TodoItem = ({ todos, del }) => {
-    const [toggle, setToggle] = useState(false);
-    const [val, setVal] = useState('')
-
-    // const toggleChange = (e) => {
-    //     e.target.classList.toggle(toggle);
-
-    // }
-    useEffect(() => {
-        toggle ? setVal('completed') : setVal(null);
-    })
+const TodoItem = ({ todos, del, checked }) => {
 
     const todoItem = 
       todos.length ? (
-        todos.map((i) => {
+        todos.map((i, index) => {
             return(
             <li key={i.id} >
                 <span 
-                  onClick={(e) => {
-                  i.checked = !i.checked;
-                  e.target.classList.toggle('completed');
-                  
-                  
-                  // toggleChange(e)              
-                  console.log(i, toggle);
-                
+                  className={i.checked ? 'completed' : ''}  
+                  onClick={() => {
+                    checked(index)
+        
                     }}
-                  className={val}>{i.text}
+                  >{i.text}
                 </span>
                 <button onClick={() => del(i.id)} className='delete-todo'>x</button>
            </li>
