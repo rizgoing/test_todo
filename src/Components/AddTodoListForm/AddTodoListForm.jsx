@@ -6,8 +6,10 @@ const AddTodoListForm = ({ add }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        add(itemName);
-        setItemName('');
+        const valtrim = itemName.trim()
+        valtrim !== '' ?  add(itemName) : console.log('');
+       
+        setItemName('');        
     }
 
     return (
@@ -16,6 +18,7 @@ const AddTodoListForm = ({ add }) => {
             className="input-list"
             type="text" 
             autoFocus 
+            required
             autoComplete="off"
             value={itemName} 
             placeholder='New list...' 

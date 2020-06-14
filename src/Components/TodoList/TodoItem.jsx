@@ -13,7 +13,7 @@ const TodoItem = ({ todos, del, checked }) => {
                     checked(index)
         
                     }}
-                  >{i.text}
+                  >{i.todo}
                 </span>
                 <button onClick={() => del(i.id)} className='delete-todo'>x</button>
            </li>

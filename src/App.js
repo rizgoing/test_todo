@@ -1,20 +1,21 @@
 import React from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+
 import TodoLists from "./Components/TodoLists/TodoLists";
-import TodoList from "./Components/TodoList/TodoList";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
+import TodoList from "./Components/TodoList/TodoList";
 
 function App() {
   return (
-    <Router>
-      <div className="container">
-        <TodoLists />
+    <div className="container">
+      <TodoLists />
+      <Router>
         <Switch>
           <Homepage exact path="/" component={Homepage} />
-          <TodoList path="/lists/:id" component={TodoList} />
+          <TodoList path="/list/:id" component={TodoList} />
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 

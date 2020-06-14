@@ -1,24 +1,33 @@
 import React, { useState } from 'react'
 
+
 const AddTodo = ({ add }) => {
 
-    const [todo, setTodo] = useState('');
+    const [todoItem, setTodoItem] = useState('');
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        add(todo);
-        setTodo('')
+        e.preventDefault();  
+        const val = todoItem.trim()
+        val !== '' ?  add(todoItem) : console.log('');
+         
+        setTodoItem('')
     }
+
+    const handleChange = (e) => {
+        setTodoItem(e.target.value)
+    }
+
 
     return (
         <form onSubmit={handleSubmit}>
             <input 
             type="text"
             autoFocus 
+            required
             autoComplete="off"
-            value={todo} 
+            value={todoItem} 
             placeholder='Add todo..' 
-            onChange={(e) => setTodo(e.target.value) } />
+            onChange={handleChange} />
         </form>
     )
 }

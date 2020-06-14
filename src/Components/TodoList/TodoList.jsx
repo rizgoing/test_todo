@@ -4,18 +4,19 @@ import Search from '../Search/Search';
 import TodoItem from './TodoItem';
 import Filters from '../Filters/Filters';
 
+
 const TodoList = () => {
    
     const [todos, setTodos] = useState([]);
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState(false);
 
-    const addTodo = (e) => {
 
+    const addTodo = (e) => {
         setTodos([...todos, {
-            text: e,
+            todo: e,
             id: Math.random(),
-            checked:false,
+            checked: false,
         }])
     }
 
@@ -32,8 +33,8 @@ const TodoList = () => {
                 todo.id !== id                
             )
         } )
-        setTodos(todosDel)
-        console.log('id:', id);
+        
+        setTodos(todosDel);
     
     }
 
@@ -42,7 +43,7 @@ const TodoList = () => {
     const searchedTodos = !search
     ? todos
     : todos.filter((todo) => {
-        return todo.text.toLowerCase().includes(search.toLowerCase());
+        return todo.todo.toLowerCase().includes(search.toLowerCase());
     });
 
     const handleFilter = (e) => {
